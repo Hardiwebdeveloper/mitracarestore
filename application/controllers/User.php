@@ -46,6 +46,15 @@ class User extends CI_Controller {
                 $config['upload_path'] = './image/profile/';
                 
                 $this->load->library('upload', $config);
+
+                if($this->upload->do_upload('image')){
+
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('image', $new_image);
+
+                }else{
+                    echo $this->upload->dispay_errors();
+                }
             }
             $this->db->set('name', $name);
             $this->db->where('email', $email);
