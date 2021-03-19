@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2021 at 05:01 AM
+-- Generation Time: Mar 19, 2021 at 11:45 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -43,8 +43,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(14, 'Bela', 'bella@gmail.com', 'default.jpg', '$2y$10$UIIEFcAtHswkjwt62aC4ou4/UOD.u2kveunG9BhtkNziSnC2ai2jy', 2, 1, 1615781557),
-(15, 'hardiwanto saputra', 'hardiwantosaputra@gmail.com', 'default.jpg', '$2y$10$fpMkFlzBg20wSYoHORBSmu6ShZS1A3Q6eNRIpIj2L7EciGD3I30eK', 1, 1, 1615799860);
+(14, 'Bayu septian', 'bella@gmail.com', 'vektor_img.jpg', '$2y$10$crv.w0GQNVnPBIpx.cTzsOMa1NCE2YMr/b0L8oveJQN/wKHxti87C', 2, 1, 1615781557),
+(15, 'hardiwanto saputra', 'hardiwantosaputra@gmail.com', 'vektor.png', '$2y$10$vwbhTjKxoNnOcI9qzepkheTY932HBRFFOxJUbtUfGsDgwGDCI.Rm.', 1, 1, 1615799860),
+(28, 'abizar', 'marniatird@gmail.com', 'default.jpg', '$2y$10$s5GD0xLV98OwGTNQKI5ZTuyU1AMBVR5dVERXL0dWLUBZnhtonX8zO', 2, 1, 1616149887);
 
 -- --------------------------------------------------------
 
@@ -67,10 +68,10 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (9, 1, 2),
 (11, 2, 6),
 (12, 1, 6),
-(15, 2, 7),
 (16, 1, 3),
 (17, 1, 7),
-(19, 2, 2);
+(19, 2, 2),
+(20, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,21 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (4, 3, 'Menu Management', 'menu', 'fa fa-fw fa-folder', 1),
 (5, 3, 'SubMenu Management', 'menu/submenu', 'fa fa-fw fa-folder-open', 1),
 (6, 1, 'Role', 'admin/role', 'fa fa-fw fa-cog', 1),
-(13, 7, 'All Order', 'menu/submenu', 'fa fa-fw fa-shopping-cart', 1);
+(13, 7, 'All Order', 'menu/submenu', 'fa fa-fw fa-shopping-cart', 1),
+(14, 2, 'Change Password', 'user/changepassword', 'fa fa-fw fa-key', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_token`
+--
+
+CREATE TABLE `user_token` (
+  `id` int(11) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `token` varchar(128) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -175,6 +190,12 @@ ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_token`
+--
+ALTER TABLE `user_token`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -182,13 +203,13 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
@@ -206,7 +227,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `user_token`
+--
+ALTER TABLE `user_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
