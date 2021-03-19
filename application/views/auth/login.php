@@ -19,9 +19,13 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
-              <div>
-                <button type="submit" class="btn btn-primary btn-user">Submit</button>
-                <a class="reset_pass text-center" href="#">Lost your password?</a>
+              <div class=form-group>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <button type="submit" class="btn btn-primary btn-user col-md-6">Submit</button>
+                    <a class="reset_pass text-center" href="<?= base_url('auth/forgotpassword'); ?>">Lupa Password?</a>
+                  </div>
+                </div>
               </div>
 
               <div class="clearfix"></div>
